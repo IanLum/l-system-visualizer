@@ -1,3 +1,5 @@
 from lsystem import *
 
-Plant().visualize(6, show_drawing=False)
+# Dragon().visualize(13)
+# Sierpinski().visualize(7)
+# Plant().visualize(6)
