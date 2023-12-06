@@ -1,4 +1,5 @@
-from lsystem import Lsystem
+from lsystem import *
 
-algae = Lsystem(start="A", productions={"A": "AB", "B": "A"})
-print(algae.generate(6))
+print(Algae().generate(5))
+print(Dragon().generate(5))
+Dragon().visualize()
