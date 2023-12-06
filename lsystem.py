@@ -24,7 +24,7 @@ class Lsystem(ABC):
 
         res = ""
         for char in self.generate(steps - 1):
-            res += self.productions[char]
+            res += self.productions.get(char, char)
         return res
 
 
@@ -41,7 +41,7 @@ class Algae(Lsystem):
 
 class Dragon(VisualLSystem):
     start = "F"
-    productions = {"F": "F+G", "G": "F-G", "+": "+", "-": "-"}
+    productions = {"F": "F+G", "G": "F-G"}
 
     def visualize(self):
         print("TBD!")
