@@ -34,7 +34,7 @@ class VisualLSystem(Lsystem):
         turt = turtle.Turtle()
         turt.screen.title("L System Visualizer")
         turt.speed(0)
-        n = 1 if show_drawing else 0
+        n = 10 if show_drawing else 0
         turtle.tracer(n, 0)  # needs tweaking
         return turt
 
@@ -83,6 +83,34 @@ class Sierpinski(VisualLSystem):
                     turt.left(60)
                 case "-":
                     turt.right(60)
+
+        turtle.mainloop()
+        turtle.update()
+
+
+class Plant(VisualLSystem):
+    start = "X"
+    productions = {"X": "F+[[X]-X]-F[-FX]+X", "F": "FF"}
+
+    def visualize(self, steps, show_drawing=True):
+        turt = self.init_turtle(show_drawing)
+        stack = []
+        for char in self.generate(steps):
+            match char:
+                case "F":
+                    turt.forward(3)
+                case "+":
+                    turt.left(25)
+                case "-":
+                    turt.right(25)
+                case "[":
+                    stack.append((turt.position(), turt.heading()))
+                case "]":
+                    turt.pu()  # pen up, stop drawing
+                    position, heading = stack.pop()
+                    turt.goto(position)
+                    turt.setheading(heading)
+                    turt.pd()
 
         turtle.mainloop()
         turtle.update()
