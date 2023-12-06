@@ -34,7 +34,7 @@ class VisualLSystem(Lsystem):
         turt = turtle.Turtle()
         turt.screen.title("L System Visualizer")
         turt.speed(0)
-        n = 10 if show_drawing else 0
+        n = 1 if show_drawing else 0
         turtle.tracer(n, 0)  # needs tweaking
         return turt
 
@@ -52,13 +52,13 @@ class Dragon(VisualLSystem):
     start = "F"
     productions = {"F": "F+G", "G": "F-G"}
 
-    def visualize(self, steps, show_drawing=True):
+    def visualize(self, steps, size=3, show_drawing=True):
         turt = self.init_turtle(show_drawing)
 
         for char in self.generate(steps):
             match char:
                 case "F" | "G":
-                    turt.forward(3)
+                    turt.forward(size)
                 case "+":
                     turt.left(90)
                 case "-":
@@ -72,13 +72,13 @@ class Sierpinski(VisualLSystem):
     start = "A"
     productions = {"A": "B-A-B", "B": "A+B+A"}
 
-    def visualize(self, steps, show_drawing=True):
+    def visualize(self, steps, size=3, show_drawing=True):
         turt = self.init_turtle(show_drawing)
 
         for char in self.generate(steps):
             match char:
                 case "A" | "B":
-                    turt.forward(3)
+                    turt.forward(size)
                 case "+":
                     turt.left(60)
                 case "-":
@@ -92,13 +92,13 @@ class Plant(VisualLSystem):
     start = "X"
     productions = {"X": "F+[[X]-X]-F[-FX]+X", "F": "FF"}
 
-    def visualize(self, steps, show_drawing=True):
+    def visualize(self, steps, size=3, show_drawing=True):
         turt = self.init_turtle(show_drawing)
         stack = []
         for char in self.generate(steps):
             match char:
                 case "F":
-                    turt.forward(3)
+                    turt.forward(size)
                 case "+":
                     turt.left(25)
                 case "-":
