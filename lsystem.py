@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import turtle
 
 
 class Lsystem(ABC):
@@ -29,6 +30,14 @@ class Lsystem(ABC):
 
 
 class VisualLSystem(Lsystem):
+    def init_turtle(self, show_drawing) -> turtle.Turtle:
+        turt = turtle.Turtle()
+        turt.screen.title("L System Visualizer")
+        turt.speed(0)
+        n = 1 if show_drawing else 0
+        turtle.tracer(n, 0)  # needs tweaking
+        return turt
+
     @abstractmethod
     def visualize(self):
         pass
@@ -43,5 +52,17 @@ class Dragon(VisualLSystem):
     start = "F"
     productions = {"F": "F+G", "G": "F-G"}
 
-    def visualize(self):
-        print("TBD!")
+    def visualize(self, steps, show_drawing=True):
+        turt = self.init_turtle(show_drawing)
+
+        for char in self.generate(steps):
+            match char:
+                case "F" | "G":
+                    turt.forward(3)
+                case "+":
+                    turt.left(90)
+                case "-":
+                    turt.right(90)
+
+        turtle.mainloop()
+        turtle.update()
