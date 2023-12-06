@@ -66,3 +66,23 @@ class Dragon(VisualLSystem):
 
         turtle.mainloop()
         turtle.update()
+
+
+class Sierpinski(VisualLSystem):
+    start = "A"
+    productions = {"A": "B-A-B", "B": "A+B+A"}
+
+    def visualize(self, steps, show_drawing=True):
+        turt = self.init_turtle(show_drawing)
+
+        for char in self.generate(steps):
+            match char:
+                case "A" | "B":
+                    turt.forward(3)
+                case "+":
+                    turt.left(60)
+                case "-":
+                    turt.right(60)
+
+        turtle.mainloop()
+        turtle.update()
