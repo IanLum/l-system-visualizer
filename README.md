@@ -4,16 +4,18 @@ Foundations of Computer Science Final Project: Visualizer of L-system fractals
 ## Overview of L-systems
 
 An [L-system, or Lindenmayer system](https://en.wikipedia.org/wiki/L-system) is a type of [rewrite system](https://en.wikipedia.org/wiki/Rewriting), that applies all rewrite rules simultaneously. As such, while standard rewrite systems could rewrite a symbol into multiple different strings, L-systems only rewrite a given symbol into a single specific string. As an example, an L-system with the following production rules:
-$$ A \rightarrow AB $$
-$$ B \rightarrow A $$
+```math
+A \rightarrow AB
+B \rightarrow A
+```
 would rewrite `ABA` to `ABAAB`:
-$$
+```math
 \begin{align*}
 &A          & &B          & &A \\
 &\downarrow & &\downarrow & &\downarrow \\
 &AB         & &A          & &AB \\
 \end{align*}
-$$
+```
 
 ## L-systems for Generating Fractals
 
