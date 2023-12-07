@@ -1,4 +1,4 @@
-from lsystem import *
+from examples import *
 
 # Dragon().visualize(13)
 # Sierpinski().visualize(7)
