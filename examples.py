@@ -100,3 +100,70 @@ class Plant(VisualLSystem):
 
         turtle.mainloop()
         turtle.update()
+
+
+class QuadGosper(VisualLSystem):
+    start = "-YF"
+    productions = {
+        "X": "XFX-YF-YF+FX+FX-YF-YFFX+YF+FXFXYF-FX+YF+FXFX+YF-FXYF-YF-FX+FX+YFYF-",
+        "Y": "+FXFX-YF-YF+FX+FXYF+FX-YFYF-FX-YF+FXYFYF-FX-YFFX+FX+YF-YF-FX+FX+YFY",
+    }
+
+    def visualize(self, steps, size=3, show_drawing=True):
+        turt = self.init_turtle(show_drawing, speed_multiplier=100)
+        turt.pu()
+        turt.goto((0, -200))
+        turt.setheading(90)
+        turt.pd()
+        stack = []
+        for char in self.generate(steps):
+            match char:
+                case "F":
+                    turt.forward(size)
+                case "+":
+                    turt.left(90)
+                case "-":
+                    turt.right(90)
+                case "[":
+                    stack.append((turt.position(), turt.heading()))
+                case "]":
+                    turt.pu()  # pen up, stop drawing
+                    position, heading = stack.pop()
+                    turt.goto(position)
+                    turt.setheading(heading)
+                    turt.pd()
+
+        turtle.mainloop()
+        turtle.update()
+
+
+class Weed(VisualLSystem):
+    start = "F"
+    productions = {"F": "FF-[XY]+[XY]", "X": "+FY", "Y": "-FX"}
+
+    def visualize(self, steps, size=3, show_drawing=True):
+        turt = self.init_turtle(show_drawing, speed_multiplier=100)
+        turt.pu()
+        turt.goto((0, -200))
+        turt.setheading(90)
+        turt.pd()
+        stack = []
+        for char in self.generate(steps):
+            match char:
+                case "F":
+                    turt.forward(size)
+                case "+":
+                    turt.left(22.5)
+                case "-":
+                    turt.right(22.5)
+                case "[":
+                    stack.append((turt.position(), turt.heading()))
+                case "]":
+                    turt.pu()  # pen up, stop drawing
+                    position, heading = stack.pop()
+                    turt.goto(position)
+                    turt.setheading(heading)
+                    turt.pd()
+
+        turtle.mainloop()
+        turtle.update()
