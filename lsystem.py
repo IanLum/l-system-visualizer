@@ -76,12 +76,31 @@ class Sierpinski(VisualLSystem):
         turt = self.init_turtle(show_drawing)
         turt.pu()
         turt.goto((-200, -200 * (-1) ** steps))
-        # turt.goto(-200, 200)
         turt.pd()
 
         for char in self.generate(steps):
             match char:
                 case "A" | "B":
+                    turt.forward(size)
+                case "+":
+                    turt.left(60)
+                case "-":
+                    turt.right(60)
+
+        turtle.mainloop()
+        turtle.update()
+
+
+class Koch(VisualLSystem):
+    start = "F++F++F"
+    productions = {"F": "F-F++F-F"}
+
+    def visualize(self, steps, size=3, show_drawing=True):
+        turt = self.init_turtle(show_drawing)
+
+        for char in self.generate(steps):
+            match char:
+                case "F":
                     turt.forward(size)
                 case "+":
                     turt.left(60)
