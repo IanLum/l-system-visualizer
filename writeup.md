@@ -182,4 +182,34 @@ turtle.update()
 
 ### About `examples.py`
 
-In `examples.py`, we've implemented various fractals as L-systems.
+In `examples.py`, we've implemented various fractals as L-systems, following the construction and drawing rules listed in the [Other Fractals](#other-fractals) section. Below are the lines of code to draw the various fractals.
+
+```python
+Dragon().visualize(13)
+```
+Output:
+
+![dragon curve gif](/img/dragon.gif)
+
+```python
+Sierpinski().visualize(7)
+```
+Output:
+
+![sierpinski gif](/img/sierpinski.gif)
+
+```python
+Koch().visualize(4)
+```
+Output:
+
+![koch gif](/img/koch.gif)
+
+```python
+Plant().visualize(6)
+```
+Output:
+
+![plant gif](/img/plant.gif)
+
+
