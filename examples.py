@@ -109,10 +109,10 @@ class QuadGosper(VisualLSystem):
         "Y": "+FXFX-YF-YF+FX+FXYF+FX-YFYF-FX-YF+FXYFYF-FX-YFFX+FX+YF-YF-FX+FX+YFY",
     }
 
-    def visualize(self, steps, size=3, show_drawing=True):
+    def visualize(self, steps, size=5, show_drawing=True):
         turt = self.init_turtle(show_drawing, speed_multiplier=100)
         turt.pu()
-        turt.goto((0, -200))
+        turt.goto((-300, -300))
         turt.setheading(90)
         turt.pd()
         stack = []
@@ -141,10 +141,10 @@ class Weed(VisualLSystem):
     start = "F"
     productions = {"F": "FF-[XY]+[XY]", "X": "+FY", "Y": "-FX"}
 
-    def visualize(self, steps, size=3, show_drawing=True):
+    def visualize(self, steps, size=4, show_drawing=True):
         turt = self.init_turtle(show_drawing, speed_multiplier=100)
         turt.pu()
-        turt.goto((0, -200))
+        turt.goto((0, -390))
         turt.setheading(90)
         turt.pd()
         stack = []
@@ -153,9 +153,9 @@ class Weed(VisualLSystem):
                 case "F":
                     turt.forward(size)
                 case "+":
-                    turt.left(22.5)
+                    turt.left(30)
                 case "-":
-                    turt.right(22.5)
+                    turt.right(30)
                 case "[":
                     stack.append((turt.position(), turt.heading()))
                 case "]":

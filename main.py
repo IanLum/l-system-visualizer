@@ -4,5 +4,5 @@ from examples import *
 # Sierpinski().visualize(10)
 # Koch().visualize(1)
 # Plant().visualize(6)
-# QuadGosper().visualize(5)
-# Weed().visualize(6)
+# QuadGosper().visualize(3)
+# Weed().visualize(7)
