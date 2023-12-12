@@ -189,7 +189,7 @@ Output:
 ![plant gif](/img/plant.gif)
 
 ``` python
-QuadGosper().visualize(13)
+QuadGosper().visualize(3)
 ```
 
 Output:
@@ -197,7 +197,7 @@ Output:
 ![quadratic gosper gif](/img/quadgosper.gif){width="487"}
 
 ``` python
-Weed().visualize(13)
+Weed().visualize(7)
 ```
 
 Output:
